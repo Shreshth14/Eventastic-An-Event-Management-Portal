@@ -1,0 +1,143 @@
+<!--Linked Page 2-->
+<html>
+<head>
+		<title>
+		Eventastic
+        </title>
+        <link href="style.css" type="text/css" rel="stylesheet">
+    <style>
+            .dropbtn {
+                background-color: rgb(5, 5, 5);
+                color: white;
+                padding: 20px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+            
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: hsl(288, 100%, 1%);
+                min-width: 30px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
+            
+            .dropdown-content a {
+                color: rgb(255, 255, 255);
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+            
+            .dropdown-content a:hover {background-color: #0fee08}
+            
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+            
+            .dropdown:hover .dropbtn {
+                background-color: #3f0864;
+            }
+            a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+            </style>
+</head>
+<body background="fback.jpg" alink="white" link="white" vlink="white">
+        <center>
+        <b>
+        <font face="Trebuchet MS" size="150" color="white">
+        <a href="Final.php">EVENTASTIC</a>
+        </font>
+        </b>
+        </center>
+        <br><br>
+        <br>
+        <center>
+                <div class="dropdown">
+                                <button class="dropbtn"><a href="Final.php"><font face="Trebuchet MS">HOME</font></a></button>
+                              </div>
+                <div class="dropdown">
+                  <button class="dropbtn"><font face="Trebuchet MS">APPS</font></button>
+                  <div class="dropdown-content">
+                    <a href="app1.php"><font face="Trebuchet MS">eNotice Board</font></a>
+                    <a href="https://play.google.com/store?hl=en"><font face="Trebuchet MS">Google Play</font></a>
+                  </div>
+                </div>
+                <div class="dropdown">
+                        <button class="dropbtn"><font face="Trebuchet MS">IMPORTANT LINKS</font></button>
+                        <div class="dropdown-content">
+                          <a href="#"><font face="Trebuchet MS">Buy and Rent Books</font></a>
+                          <a href="#"><font face="Trebuchet MS">Class Notes</font></a>
+                          <a href="#"><font face="Trebuchet MS">Practical Work</font></a>
+                        </div>
+                      </div>
+                <div class="dropdown">
+                        <button class="dropbtn"><font face="Trebuchet MS">CONTACT US</font></button>
+                        <div class="dropdown-content">
+                          <a href="#"><font face="Trebuchet MS">Mayank Vinayak</font></a>
+                          <a href="#"><font face="Trebuchet MS">Mehul Sanket</font></a>
+                          <a href="#"><font face="Trebuchet MS">Shubham Agarwal</font></a>
+                          <a href="#"><font face="Trebuchet MS">Shreshth Vats</font></a>
+                        </div>
+                      </div>
+                <div class="dropdown">
+                        <button class="dropbtn"><font face="Trebuchet MS"><a href="about.php">ABOUT US</a></font></button>
+                        
+                      </div>
+                      </center>
+        <br>
+        <br><br><br>
+        <table border="4" background="tbackg.jpg" bordercolor="white" align="center" cellpadding="10" cellspacing="1">
+<tr>
+<th><font face="Trebuchet MS" color="#ffffff">Event No.</font></th>
+<th><font face="Trebuchet MS" color="#ffffff">Event Name</font></th>
+<th><font face="Trebuchet MS" color="#ffffff">Description</font></th>
+<th><font face="Trebuchet MS" color="#ffffff">Date</font></th>
+<th><font face="Trebuchet MS" color="#ffffff">Venue</font></th>
+<th><font face="Trebuchet MS" color="#ffffff">Time</font></th>
+</tr>
+<?php
+$conn = mysqli_connect("localhost","root","","student");
+if ($conn-> connect_error) {
+   die("connection failed: ". $conn-> connect_error);
+}
+$sql="SELECT eno,ename,description,edate,venue,etime from events";
+$result = $conn-> query($sql);
+
+if ($result-> num_rows > 0) {
+   while ($row = $result-> fetch_assoc()){
+       echo "<tr><td>". $row["eno"] ."</td><td>". $row["ename"] ."</td><td>". $row["description"] ."</td><td>". $row["edate"] ."</td><td>". $row["venue"] ."</td><td>". $row["etime"] ."</td></tr>";
+	}
+
+   	echo "</table>";
+}
+else {
+   echo "no result";
+}
+
+$conn-> close();
+?>
+</table>
+
+</body>
+</html>
